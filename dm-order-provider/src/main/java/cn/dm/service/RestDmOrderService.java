@@ -54,4 +54,9 @@ public class RestDmOrderService {
     public List<DmOrder> getDmOrderListByOrderNoOrDate(@RequestBody Map<String, Object> param) throws Exception {
         return dmOrderMapper.getDmOrderListByOrderNoOrDate(param);
     }
+
+    @RequestMapping(value = "/getDmOrderByOrderNo", method = RequestMethod.POST)
+    public DmOrder getDmOrderByOrderNo(@RequestParam("orderNo") String orderNo) throws Exception {
+        return dmOrderMapper.getDmOrderByOrderNo(orderNo);
+    }
 }
