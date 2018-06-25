@@ -42,7 +42,8 @@ public class RestDmOrderLinkUserService {
      @RequestMapping(value = "/qdtxAddDmOrderLinkUser",method = RequestMethod.POST)
      public Integer qdtxAddDmOrderLinkUser(@RequestBody DmOrderLinkUser dmOrderLinkUser)throws Exception{
         dmOrderLinkUser.setCreatedTime(new Date());
-        return dmOrderLinkUserMapper.insertDmOrderLinkUser(dmOrderLinkUser);
+        this.dmOrderLinkUserMapper.insertDmOrderLinkUser(dmOrderLinkUser);
+        return dmOrderLinkUser.getId();
      }
 
      @RequestMapping(value = "/qdtxModifyDmOrderLinkUser",method = RequestMethod.POST)
