@@ -38,9 +38,10 @@ public class RestDmOrderService {
     }
 
     @RequestMapping(value = "/qdtxAddDmOrder", method = RequestMethod.POST)
-    public Integer qdtxAddDmOrder(@RequestBody DmOrder dmOrder) throws Exception {
+    public Long qdtxAddDmOrder(@RequestBody DmOrder dmOrder) throws Exception {
         dmOrder.setCreatedTime(new Date());
-        return dmOrderMapper.insertDmOrder(dmOrder);
+        this.dmOrderMapper.insertDmOrder(dmOrder);
+        return dmOrder.getId();
     }
 
     @RequestMapping(value = "/qdtxModifyDmOrder", method = RequestMethod.POST)
