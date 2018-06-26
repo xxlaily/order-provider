@@ -27,6 +27,11 @@ public class RestDmOrderService {
         return dmOrderMapper.getDmOrderById(id);
     }
 
+    @RequestMapping(value = "/deleteDmOrderById", method = RequestMethod.POST)
+    public Integer deleteDmOrderById(@RequestParam("id") Long id) throws Exception {
+        return dmOrderMapper.deleteDmOrderById(id);
+    }
+
     @RequestMapping(value = "/getDmOrderListByMap", method = RequestMethod.POST)
     public List<DmOrder> getDmOrderListByMap(@RequestBody Map<String, Object> param) throws Exception {
         return dmOrderMapper.getDmOrderListByMap(param);
@@ -59,4 +64,5 @@ public class RestDmOrderService {
     public DmOrder getDmOrderByOrderNo(@RequestParam("orderNo") String orderNo) throws Exception {
         return dmOrderMapper.getDmOrderByOrderNo(orderNo);
     }
+
 }
