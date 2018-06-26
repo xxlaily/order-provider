@@ -65,4 +65,15 @@ public class RestDmOrderService {
         return dmOrderMapper.getDmOrderByOrderNo(orderNo);
     }
 
+    @RequestMapping(value = "/flushCancelOrderType", method = RequestMethod.POST)
+    public boolean flushCancelOrderType() throws Exception {
+        Integer flag = 0;
+        flag = dmOrderMapper.flushCancelOrderType();
+        return flag > 0 ? true : false;
+    }
+
+    @RequestMapping(value = "/getDmOrderByOrderTypeAndTime", method = RequestMethod.POST)
+    public List<DmOrder> getDmOrderByOrderTypeAndTime() throws Exception{
+        return dmOrderMapper.getDmOrderByOrderTypeAndTime();
+    }
 }
