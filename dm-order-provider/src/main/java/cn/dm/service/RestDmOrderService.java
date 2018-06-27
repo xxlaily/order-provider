@@ -85,6 +85,6 @@ public class RestDmOrderService {
         }
         DmOrder dmOrder = this.getDmOrderByOrderNo(orderNo);
         String tradeNo = flag == 0?dmOrder.getWxTradeNo():dmOrder.getAliTradeNo();
-        return dmOrder.getOrderType().equals(2) && !EmptyUtils.isEmpty(tradeNo);
+        return dmOrder.getOrderType().equals(0) && !EmptyUtils.isEmpty(tradeNo);
     }
 }
