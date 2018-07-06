@@ -1,5 +1,6 @@
 package cn.dm.service;
 
+import cn.dm.common.Constants;
 import cn.dm.common.EmptyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -74,17 +75,17 @@ public class RestDmOrderService {
     }
 
     @RequestMapping(value = "/getDmOrderByOrderTypeAndTime", method = RequestMethod.POST)
-    public List<DmOrder> getDmOrderByOrderTypeAndTime() throws Exception{
+    public List<DmOrder> getDmOrderByOrderTypeAndTime() throws Exception {
         return dmOrderMapper.getDmOrderByOrderTypeAndTime();
     }
 
     @RequestMapping(value = "/processed", method = RequestMethod.POST)
-    public boolean processed(@RequestParam("orderNo")String orderNo, Integer flag) throws Exception {
-        if(EmptyUtils.isEmpty(orderNo)||EmptyUtils.isEmpty(flag)){
+    public boolean processed(@RequestParam("orderNo") String orderNo, Integer flag) throws Exception {
+        if (EmptyUtils.isEmpty(orderNo) || EmptyUtils.isEmpty(flag)) {
             return false;
         }
         DmOrder dmOrder = this.getDmOrderByOrderNo(orderNo);
-        String tradeNo = flag == 0?dmOrder.getWxTradeNo():dmOrder.getAliTradeNo();
-        return dmOrder.getOrderType().equals(2) && !EmptyUtils.isEmpty(tradeNo);
+        String tradeNo = flag == Constants.PayMethod.WINXI ? dmOrder.getWxTradeNo() : dmOrder.getAliTradeNo();
+        return dmOrder.getOrderType().equals(0) && !EmptyUtils.isEmpty(tradeNo);
     }
 }
